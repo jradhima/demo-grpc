@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "github.com/jradhima/grpc-demo/invoicer";
+
+service Invoicer {
+    rpc Create (createRequest) returns (createResponse);
+}
+
+message Amount {
+    int64 amount = 1;
+    string currency = 2;
+}
+
+message createResponse {
+    bytes pdf = 1;
+    bytes docx = 2;
+}
+
+message createRequest {
+    Amount amount = 1;
+    string from = 2;
+    string to = 3;
+}
